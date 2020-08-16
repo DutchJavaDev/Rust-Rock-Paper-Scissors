@@ -133,7 +133,7 @@ fn _run_game(_robot_choice:Choices, _user_choice:Choices) -> Winner {
         }
     }
 
-    return _winner;
+    _winner
 }
 
 fn main(){
