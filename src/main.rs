@@ -42,10 +42,8 @@ fn _get_user_input() -> String {
             println!("{}",_error)
         }
     }
-
-    let _input = String::from(_input.to_lowercase().trim());
-
-    _input
+    
+    _input.to_lowercase().trim().to_owned()
 }
 
 fn _get_user_choice(_string:String) -> Choices {
