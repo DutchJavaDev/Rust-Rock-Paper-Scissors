@@ -36,13 +36,10 @@ fn _get_user_input() -> String {
     let mut _input = String::new();
 
     match io::stdin().read_line(&mut _input){
-        Ok(_string) => _string,
-        Err(_error) => {
-            println!("Failed to read from input stream");
-            println!("{}",_error)
-        }
+        Ok(_n) => println!(""),
+        Err(error) => println!("error: {}", error),
     }
-    
+
     _input.to_lowercase().trim().to_owned()
 }
 
@@ -54,8 +51,7 @@ fn _get_user_choice(_string:String) -> Choices {
     };
 
     match _number {
-
-        -1 => Choices::None,
+        -1 | std::i32::MIN..=-2i32 | 0i32 | 4i32..=std::i32::MAX => Choices::None,
 
         1 => Choices::Rock,
 
@@ -70,12 +66,13 @@ fn _get_robot_choice() -> Choices {
     let mut _number = rand::thread_rng().gen_range(0,2);
 
     match _number { 
-
         0 => Choices::Rock,
 
         1 => Choices::Paper,
 
-        2 => Choices::Scissors
+        2 => Choices::Scissors,
+
+        std::i32::MIN..=-2i32 | 4i32..=std::i32::MAX | -1i32 | 3i32 => Choices::None,
     }
 }
 
